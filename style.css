@@ -1,0 +1,336 @@
+:root {
+--SoftOrange: hsl(35, 77%, 62%);
+--SoftRed: hsl(5, 85%, 63%);
+
+--offwhite: hsl(36, 100%, 99%);
+--grayishBlue: hsl(233, 8%, 79%);
+--darkGrayishBlue: hsl(236, 13%, 42%);
+--veryDarkBlue: hsl(240, 100%, 5%);
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter-VariableFont_slnt\,wght.ttf") format("truetype");
+    display: swap;
+    font-weight: 100 900;
+}
+
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+body {
+    display:grid;
+    height: 100vh;
+    font-family: "Inter";
+    font-size: 15px;
+}
+
+
+main {
+    display: grid;
+    padding: 1rem;
+    gap: 2rem;
+    max-width: 72rem;
+}
+
+
+.navigation-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    img {
+        width: 2rem;
+    }
+
+    #buttonMenu {
+        border: none;
+        cursor: pointer;
+    }
+
+    .links {
+        display: grid;
+        gap:1rem;
+        position:absolute;
+        top:-3rem;
+        right:0;
+        padding: 2rem 0 2rem 2rem;
+        width: 15rem;
+        height: 30rem;
+        background-color: var(--offwhite);
+        
+        
+        #buttonCloseMenu {
+            border:none;
+            background-color: var(--offwhite);
+            width: auto;
+            justify-self: end;
+            cursor: pointer;
+           
+        }
+        a {
+            text-decoration: none;
+            font-weight: 400;
+            color: var(--veryDarkBlue);
+            
+        }
+
+        a:hover {
+            color: var(--SoftOrange);
+        }
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.navigation-desktop {
+    display:none;
+}
+
+
+.article-image-container {
+    width: auto;
+    aspect-ratio: 1/1;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+
+.article-text-container {
+    display: grid;
+    gap: 2rem;
+    h1 {
+        color: var(--veryDarkBlue);
+        font-weight: 800;
+    }
+
+    p {
+        padding-right: 1rem;
+        color: var(--darkGrayishBlue);
+        font-weight: 400;
+        line-height: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    a {
+        width: 12rem;
+        padding: 1rem 2rem;
+
+        color: var(--offwhite);
+        background-color: var(--SoftRed);
+
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 3px;
+        text-wrap: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: var(--veryDarkBlue);
+    }
+}
+
+
+aside {
+    padding:2rem 1rem;
+    color: var(--grayishBlue);
+    background-color: var(--veryDarkBlue);
+    
+     h2{
+        margin-bottom: 2rem;
+        color:var(--SoftOrange);
+        font-weight: 800;
+        font-size: 2rem;
+        
+     }
+
+     h3 {
+        font-weight: 700;
+        margin: 1rem 0;
+        font-size: 1.2rem;
+        cursor:pointer;
+     }
+
+     h3:hover {
+        color:var(--SoftOrange);
+     }
+
+     p {
+        font-weight: 400;
+     }
+
+     hr {
+        max-width: 100%;  
+        margin: 2rem 0;
+     }
+}
+
+
+section {
+    display:flex;
+    flex-direction:column;
+    gap: 1rem;
+
+    .section-containers {
+        display:flex;
+        gap:2rem;
+    
+        .section-image-container {
+            img {
+                width: 6.5rem;
+            }
+        }
+    
+        .section-text-container {
+            display:flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: .5rem;
+            .number {
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--grayishBlue);
+            }
+    
+            h4 {
+                font-weight: 800;
+                cursor: pointer;
+            }
+
+            h4:hover {
+                color:var(--SoftRed);
+            }
+    
+            p {
+                color: var(--darkGrayishBlue);
+                font-weight: 400;
+                line-height: 1.5rem;
+            }
+        }
+    }
+}
+
+
+
+@media (width >= 700px) {
+    body{
+        place-content: center;
+
+    }
+
+    .navigation-mobile {
+        display:none;
+    }
+
+    .navigation-desktop {
+        display:flex;
+        justify-content: end;
+        align-items: center;
+        grid-area: navigation;
+
+        img {
+            margin-right: auto;
+        }
+
+        a {
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--darkGrayishBlue);
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: var(--SoftOrange);   
+        }
+    }
+
+    main {
+        
+        align-items: start;
+        grid-template-columns: 71% 29%;
+        grid-template-rows: auto auto auto;
+        column-gap: 2rem;
+        row-gap: 3rem;
+        grid-template-areas:
+        "navigation navigation" 
+        "article  aside"
+        "section section";
+
+        padding-top: 5rem;
+    }
+
+    article {
+        
+        grid-area: article;
+        display: flex;
+        flex-direction:column;
+        gap: 2rem;
+        align-self: stretch;
+
+        .article-image-container {
+            aspect-ratio: 5/1;
+
+        }
+
+
+        .article-text-container{
+            display: grid;
+            grid-template-columns: 40% auto;
+            gap: 3rem;
+            .box-article1 {
+                
+                h1 {
+                    font-size: 3rem;
+    
+                }
+            }
+
+            .box-article2 {
+                display: grid;
+                gap: 1rem;
+
+                a {
+                    
+                    align-self: end;
+                }
+            }
+            
+        }
+    }
+
+    aside {
+        grid-area: aside;
+        align-self: stretch;
+        
+    }
+
+    section {
+        grid-area: section;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        .section-containers {
+
+            .section-text-container {
+                justify-content: space-between;
+                
+            }
+        }
+    }
+
+    
+}
